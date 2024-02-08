@@ -1,28 +1,33 @@
-/*
-*@outDir: то куда будет производиться сборка
-*@noImplicitAny: подсвечивает места, где не указанявно не указан тип
-*@module: различные версии модульной сборки
-*@target: Указываем версию для компиляции (либо es5 (для поддержки старых), либо es6)
-*@jsx: Это реакт и JSX (для синтаксического сахара)
-*allowJs: позволяет обрабатывать не только TS, но и JS
-*@moduleResolution: определяет, какие импорт будут
-*@esModuleInterop :позволяет работать с пакетами которые используют commonJs как с обычными пакетами с помощью import (require() module.export)=commomJs
-*@allowSyntheticDefaultImports: позволяет использовать обычным импорты
-*@baseUrl: (пока ставим текущую папку) для абсолютного импорта
-*/
-
-
 {
   "compilerOptions": {
     "outDir": "./dist/",
+    // Подсвечивает все места где не указан тип
+    // Однако это не означает, что теперь вовсе нельзя использовать any.
+    // Это означает лишь, что в подобных ситуация разработчик должен явно писать any,
     "noImplicitAny": true,
-    "module": "es6",
+    "module": "ESNext",
+    // В какую спецификацию компилируем: для поддержки большинства браузеров
     "target": "es5",
     "jsx": "react-jsx",
+    // Компилятор будет обрабатывать не только TS файлы, но и JS файлы
     "allowJs": true,
     "moduleResolution": "node",
+    // Для абсолютного импорта
     "baseUrl": ".",
+    // esModuleInterop позволяет работать с пакетами, которые используют
+    // common js как с обычными пакета с помощью import (require() module.export) = common js
+    // import Moment from 'moment';
+    // без флага esModuleInterop результат undefined
+    // console.log(Moment);
+    // c флагом результат [object Object]
+    // console.log(Moment);
     "esModuleInterop": true,
+    // Если какая-либо библиотека не имеет default import,
+    // лоадеры вроде ts-loader или babel-loader автоматически создают их
+    // вместо такого импорта
+    // import * as React from 'react';
+    // можно писать такой
+    // import React from 'react';
     "allowSyntheticDefaultImports": true
   },
   "ts-node": {
