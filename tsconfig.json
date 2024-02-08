@@ -1,0 +1,31 @@
+/*
+*@outDir: то куда будет производиться сборка
+*@noImplicitAny: подсвечивает места, где не указанявно не указан тип
+*@module: различные версии модульной сборки
+*@target: Указываем версию для компиляции (либо es5 (для поддержки старых), либо es6)
+*@jsx: Это реакт и JSX (для синтаксического сахара)
+*allowJs: позволяет обрабатывать не только TS, но и JS
+*@moduleResolution: определяет, какие импорт будут
+*@esModuleInterop :позволяет работать с пакетами которые используют commonJs как с обычными пакетами с помощью import (require() module.export)=commomJs
+*@allowSyntheticDefaultImports: позволяет использовать обычным импорты
+*/
+
+
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
+}
