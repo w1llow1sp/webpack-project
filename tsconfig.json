@@ -8,6 +8,7 @@
 *@moduleResolution: определяет, какие импорт будут
 *@esModuleInterop :позволяет работать с пакетами которые используют commonJs как с обычными пакетами с помощью import (require() module.export)=commomJs
 *@allowSyntheticDefaultImports: позволяет использовать обычным импорты
+*@baseUrl: (пока ставим текущую папку) для абсолютного импорта
 */
 
 
@@ -20,6 +21,7 @@
     "jsx": "react",
     "allowJs": true,
     "moduleResolution": "node",
+    "baseUrl": ".",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true
   },
