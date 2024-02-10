@@ -19,3 +19,4 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
         historyApiFallback: true,
     }
 }
+
