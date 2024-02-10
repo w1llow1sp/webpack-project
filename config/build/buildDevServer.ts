@@ -10,6 +10,7 @@ import type { Configuration as DevServerConfiguration } from 'webpack-dev-server
  *  - `port`: Порт, на котором будет запущен сервер разработки.
  *  - `open`: Если true, при старте сервера будет открываться браузер.
  *  - `historyApiFallback`: Если true, все неизвестные пути будут перенаправлены на index.html.
+ *  - `hot`: Параметр, отвечающий за Hot Module Replacement (https://webpack.js.org/guides/hot-module-replacement)
  */
 
 export function buildDevServer(options: BuildOptions): DevServerConfiguration {
@@ -17,6 +18,8 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
         port: options.port,
         open: true,
         historyApiFallback: true,
+        hot:true,
+
     }
 }
 

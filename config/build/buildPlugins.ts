@@ -2,6 +2,7 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import webpack from "webpack";
 import {BuildOptions} from "./types/config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import ReactRefreshPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 
 /**
  * Создаёт экземпляры плагинов webpack, необходимых для сборки проекта.
@@ -17,6 +18,8 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
  * - `ProgressPlugin`: Плагин для отображения прогресса сборки в командной строке.
  * - `MiniCssExtractPlugin`: Плагин для извлечения CSS в отдельные файлы вместо inline-стилей.
  * - `DefinePlugin` : позволяет настраивать поведение переменных во время компиляции. Для разного поведения между сборкой production и dev (в данном случае мы используем его для i18n)
+ * - `HotModuleReplacementPlugin` : плагин, отвечающий за HMR (то есть моментальное отображение изменений в коде без перезагрузки)
+ * - `HotModuleReplacementPlugin` : плагин, отвечающий за быстрое обновление реакт-компонентов (https://www.npmjs.com/package/@pmmmwh/react-refresh-webpack-plugin)
  */
 
 export function buildPlugins({paths,isDev}: BuildOptions): webpack.WebpackPluginInstance[] {
@@ -32,6 +35,8 @@ export function buildPlugins({paths,isDev}: BuildOptions): webpack.WebpackPlugin
         }),
         new webpack.DefinePlugin({
             __IS_DEV__: JSON.stringify(isDev)
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        new ReactRefreshPlugin()
     ]
 }
