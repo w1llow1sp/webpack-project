@@ -30,6 +30,14 @@ import {BuildOptions} from "./types/config";
  *      - * @type {webpack.RuleSetRule}
  *      - * @property {RegExp} test - Регулярное выражение для определения TypeScript файлов.
  *      - * @property {webpack.UseItem[]} use - Массив загрузчиков и опций, которые будут использованы для обработки PNG,JPEG,GIF файлов
+ *
+ *    - `babelLoader` - Используется для транспиляции
+ *      - * @type {webpack.RuleSetRule}
+ *      - * @property {RegExp} test - Регулярное выражение для определения файлов JavaScript и TypeScript (.js, .jsx, .tsx).
+ *      - * @property {string} exclude - Регулярное выражение исключающее node_modules из обработки.
+ *      - * @property {Object} use - Конфигурация загрузчика, включая настройки пресетов и плагинов.
+ *      - * @property {string[]} use.presets - Массив пресетов Babel для транспиляции кода.
+ *      - * @property {Array.<string|Object>} use.plugins - Массив плагинов Babel, включая i18next-extract для извлечения переводов.
  */
 
 export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
@@ -37,6 +45,25 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
     const svgLoader = {
         test: /\.svg$/,
         use: ['@svgr/webpack']
+    }
+    const babelLoader = {
+        test: /\.(js|jsx|tsx)$/,
+        exclude: /node_modules/,
+        use: {
+            loader: "babel-loader",
+            options: {
+                presets: ['@babel/preset-env'],
+                "plugins": [
+                    [
+                        "i18next-extract",
+                        {
+                            locales: ['ru', 'en'],
+                            keyAsDefaultValue: true
+                        }
+                    ],
+                ]
+            }
+        }
     }
 
     const cssLoader = {
@@ -75,6 +102,7 @@ export function buildLoaders({isDev}: BuildOptions): webpack.RuleSetRule[] {
     return [
         fileLoader,
         svgLoader,
+        babelLoader,
         typescriptLoader,
         cssLoader,
     ]
