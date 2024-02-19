@@ -2,6 +2,7 @@ module.exports = {
     env: {
         browser: true,
         es2021: true,
+        jest: true
     },
     extends: [
         'plugin:react/recommended',
@@ -22,6 +23,8 @@ module.exports = {
         'i18next',
     ],
     rules: {
+        "no-string-literal": [0],
+        "max-len": ["warn", {"code": 100, "tabWidth": 4, "ignoreComments": true}],
         'react/jsx-indent': [2, 4],
         'react/jsx-indent-props': [2, 4],
         indent: [2, 4],
