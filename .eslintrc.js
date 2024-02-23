@@ -40,6 +40,7 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-extraneous-dependencies': 'off',
         'no-underscore-dangle': 'off',
+        "react/display-name": "off",
         'i18next/no-literal-string': ['warn', { markupOnly: true, ignoreAttribute:['data-testid','to'] }],
     },
     globals: {
