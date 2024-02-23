@@ -1,9 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { t } from 'i18next';
+
 
 describe('Button', () => {
     test('Test render', () => {
-        render(<Button>TEST</Button>);
+        render(<Button>{t("Текст для тестовой кнопки")}</Button>);
         expect(screen.getByText('TEST')).toBeInTheDocument();
     });
 
