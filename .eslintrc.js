@@ -6,8 +6,6 @@ module.exports = {
     },
     extends: [
         'plugin:react/recommended',
-        'airbnb',
-        'storybook',
         'plugin:i18next/recommended',
         'plugin:storybook/recommended'
     ],
