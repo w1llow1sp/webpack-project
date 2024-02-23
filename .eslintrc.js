@@ -8,7 +8,9 @@ module.exports = {
         'plugin:react/recommended',
         'airbnb',
         'storybook',
-        'plugin:i18next/recommended', 'plugin:storybook/recommended'],
+        'plugin:i18next/recommended',
+        'plugin:storybook/recommended'
+    ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaFeatures: {
